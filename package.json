@@ -8,7 +8,7 @@
   "activationCommands": {
     "atom-workspace": "language-deepsec:toggle"
   },
-  "repository": "https://github.com/atom/language-deepsec",
+  "repository": "https://github.com/irakoton/language-deepsec",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
