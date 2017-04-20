@@ -1,0 +1,31 @@
+'.source.deepsec':
+  'let in':
+    'prefix': 'let_in'
+    'body': 'let ${1:var} = ${2:term} in\n${3:proc}'
+  'let':
+    'prefix': 'let'
+    'body': 'let ${1:proc_name}(${2:args}) =\n\t${3:proc}'
+  'free':
+    'prefix': 'free'
+    'body': 'free ${1:pub_name}.'
+  'fun':
+    'prefix': 'fun'
+    'body': 'fun ${1:symb}/${2:arity}.'
+  'reduc':
+    'prefix': 'reduc'
+    'body': 'reduc ${1:term} -> ${2:term}.'
+  'in':
+    'prefix': 'input'
+    'body': 'in(${1:channel},${2:term})'
+  'out':
+    'prefix': 'output'
+    'body': 'out(${1:channel},${2:term})'
+  'query':
+    'prefix': 'query'
+    'body': 'query ${1:eqiv}(${2:proc1},${3:proc2}).'
+  'if':
+    'prefix': 'if'
+    'body': 'if ${1:term} = ${2:term} then\n\t${3:proc1}\nelse\n\t${4:proc2}'
+  'new':
+    'prefix': 'new'
+    'body': 'new ${1:priv_name}'

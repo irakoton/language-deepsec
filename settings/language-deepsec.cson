@@ -1,0 +1,4 @@
+'.source.deepsec':
+  'editor':
+    'commentStart': '/* '
+    'commentEnd': ' */'

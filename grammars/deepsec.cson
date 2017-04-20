@@ -1,0 +1,94 @@
+'fileTypes': [
+  'apip'
+  'txt'
+]
+
+
+'name': 'Deepsec'
+
+'patterns': [
+  {
+    'match': '//.*'
+    'name': 'comment.line'
+  }
+  {
+    'name': 'comment.multiline'
+    'begin': '/\\*'
+    'end': '\\*/'
+  }
+  {
+    'match': '(/)([0-9]+)'
+    'captures':
+      '1':
+        'name': 'storage'
+      '2':
+        'name': 'constant'
+  }
+  {
+    'match': '(in)(\\()'
+    'captures':
+      '1':
+        'name': 'nothing'
+      '2':
+        'name': 'storage'
+  }
+  {
+    'match': '(;|=|\\.|/|\\(|\\)|,)'
+    'name': 'storage'
+  }
+  {
+    'match': '(free|new)((\\s+[a-zA-Z][a-zA-Z0-9\'_]*)*)'
+    'captures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'variable'
+  }
+  {
+    'match': '(query)((\\s+[a-zA-Z][a-zA-Z0-9\'_]*)*)'
+    'captures':
+      '1':
+        'name': 'constant'
+      '2':
+        'name': 'entity'
+  }
+  {
+    'match': '(let)(\\s+[a-zA-Z][a-zA-Z0-9\'_]*\\s*)(\\()(.*)(\\))'
+    'captures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'entity'
+      '3':
+        'name': 'storage'
+      '4':
+        'name': 'variable'
+      '5':
+        'name': 'storage'
+  }
+  {
+    'match': '(let)(\\s+[a-zA-Z][a-zA-Z0-9\'_]*\\s*)(\\()(.*)'
+    'captures':
+      '1':
+        'name': 'keyword'
+      '2':
+        'name': 'entity'
+      '3':
+        'name': 'storage'
+      '4':
+        'name': 'variable'
+  }
+  {
+    'match': '\\b(let|in|if|then|else|reduc|fun|free|new)\\b'
+    'name': 'keyword'
+  }
+  {
+    'match': '\\|'
+    'name': 'keyword'
+  }
+  {
+    'match': '(->)'
+    'name': 'constant'
+  }
+]
+'scopeName': 'source.deepsec'
