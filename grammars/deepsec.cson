@@ -1,8 +1,6 @@
 'fileTypes': [
-  'ds'
-  'txt'
+  'dps'
 ]
-
 
 'name': 'Deepsec'
 
@@ -13,28 +11,100 @@
   }
   {
     'name': 'comment.multiline'
-    'begin': '/\\*'
-    'end': '\\*/'
+    'begin': '\\(\\*'
+    'end': '\\*\\)'
   }
   {
-    'match': '(/)([0-9]+)'
+    'match': '\\b([0-9]+)\\b'
     'captures':
       '1':
-        'name': 'storage'
-      '2':
-        'name': 'constant'
+        'name': 'constant.numeric'
   }
   {
-    'match': '(in)(\\()'
+    'match': '(free|const)\\s+((\\w|,|\\s|\')+)\\s*(\\.)'
     'captures':
       '1':
-        'name': 'nothing'
+        'name': 'keyword.control.deepsec'
       '2':
-        'name': 'storage'
+        'patterns': [
+          {
+            'match': '(\\w|\')+'
+            'name': 'entity.name.function.deepsec'
+          }
+        ]
+      '4':
+        'name': 'keyword.deepsec'
   }
   {
-    'match': '(;|=|\\.|/|\\(|\\)|,)'
-    'name': 'storage'
+    'match': '(fun)\\s+((\\w|\')+)\\s*/\\s*([0-9]+)\\s*(\\.)'
+    'captures':
+      '1':
+        'name': 'keyword.control.deepsec'
+      '2':
+        'name': 'entity.name.function.deepsec'
+      '4':
+        'name': 'constant.numeric'
+      '5':
+        'name': 'keyword.deepsec'
+  }
+  {
+    'match': '(reduc)\\s+((\\w|\')+)\\s*\\('
+    'captures':
+      '1':
+        'name': 'keyword.control.deepsec'
+      '2':
+        'name': 'entity.name.function.deepsec'
+  }
+  {
+    'match': '(new)\\s+((\\w|\')+)'
+    'name': 'meta.declaration_name.deepsec'
+    'captures':
+      '1':
+        'name': 'keyword.control.deepsec'
+      '2':
+        'name': 'entity.name.function.deepsec'
+  }
+  {
+    'match': '(let)\\s+((\\w|\')+)\\s*(\\((\\w|,|\'|\\s)+\\))?\\s*='
+    'name': 'meta.declaration_let.deepsec'
+    'captures':
+      '1':
+        'name': 'keyword.control.deepsec'
+      '2':
+        'name': 'entity.name.function.deepsec'
+      '4':
+        'patterns': [
+          {
+            'match': '(\\w|\')+'
+            'name': 'entity.name.variable.deepsec'
+          }
+        ]
+  }
+  {
+    'match': '(let)\\s+(\\((\\w|,|=|\'|\\s|\\(|\\))+\\))?\\s*='
+    'name': 'meta.declaration_let2.deepsec'
+    'captures':
+      '1':
+        'name': 'keyword.control.deepsec'
+      '2':
+        'patterns': [
+          {
+            'match': '(\\w|\')+'
+            'name': 'entity.name.variable.deepsec'
+          }
+          {
+            'match': '='
+            'name': 'support.function.pervasives.boolean-operatons.proverif'
+          }
+        ]
+  }
+  {
+    'match': '(;|\\.|\\|)'
+    'name': 'keyword.control'
+  }
+  {
+    'match': '='
+    'name': 'support.function.pervasives.boolean-operatons.proverif'
   }
   {
     'match': '(free|new)((\\s+[a-zA-Z][a-zA-Z0-9\'_]*)*)'
@@ -45,46 +115,12 @@
         'name': 'variable'
   }
   {
-    'match': '(query)((\\s+[a-zA-Z][a-zA-Z0-9\'_]*)*)'
-    'captures':
-      '1':
-        'name': 'constant'
-      '2':
-        'name': 'entity'
+    'match': 'query\\s+trace_equiv'
+    'name': 'constant.deepsec'
   }
   {
-    'match': '(let)(\\s+[a-zA-Z][a-zA-Z0-9\'_]*\\s*)(\\()(.*)(\\))'
-    'captures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'entity'
-      '3':
-        'name': 'storage'
-      '4':
-        'name': 'variable'
-      '5':
-        'name': 'storage'
-  }
-  {
-    'match': '(let)(\\s+[a-zA-Z][a-zA-Z0-9\'_]*\\s*)(\\()(.*)'
-    'captures':
-      '1':
-        'name': 'keyword'
-      '2':
-        'name': 'entity'
-      '3':
-        'name': 'storage'
-      '4':
-        'name': 'variable'
-  }
-  {
-    'match': '\\b(let|in|if|then|else|reduc|fun|free|new)\\b'
-    'name': 'keyword'
-  }
-  {
-    'match': '\\|'
-    'name': 'keyword'
+    'match': '\\b(in|out|if|then|else)\\b'
+    'name': 'keyword.control'
   }
   {
     'match': '(->)'
