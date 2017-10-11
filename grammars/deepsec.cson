@@ -21,6 +21,12 @@
         'name': 'constant.numeric'
   }
   {
+    'match': '\\b(match|with)\\b'
+    'captures':
+      '1':
+        'name': 'keyword.match'
+  }
+  {
     'match': '(free|const)\\s+((\\w|,|\\s|\')+)\\s*(\\.)'
     'captures':
       '1':

@@ -11,6 +11,9 @@
   'fun':
     'prefix': 'fun'
     'body': 'fun ${1:symb}/${2:arity}.'
+  'match':
+    'prefix': 'match'
+    'body': 'match ${1:term} with\n| ${2:pat1} -> ${3:proc1}\n| _ -> ${4:proc2}'
   'reduc':
     'prefix': 'reduc'
     'body': 'reduc ${1:term} -> ${2:term}.'
