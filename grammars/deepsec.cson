@@ -54,7 +54,7 @@
         'name': 'keyword.deepsec'
   }
   {
-    'match': '(reduc)\\s+((\\w|\')+)\\s*\\('
+    'match': '(reduc)\\s(\\s|\\n)+((\\w|\')+)\\s*\\('
     'captures':
       '1':
         'name': 'keyword.control.deepsec'
