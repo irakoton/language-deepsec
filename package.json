@@ -1,7 +1,7 @@
 {
   "name": "language-deepsec",
   "main": "./lib/language-deepsec",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "Syntax highlighting for Deepsec",
   "keywords": [],
   "activationCommands": {
