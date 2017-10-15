@@ -27,7 +27,7 @@
         'name': 'keyword.match'
   }
   {
-    'match': '(free|const)\\s+((\\w|,|\\s|\')+)\\s*(\\.)'
+    'match': '(free|const)\\s+((\\w|,|\\s|\')+)\\s*(\\[\\w+\\])?\\s*(\\.)'
     'captures':
       '1':
         'name': 'keyword.control.deepsec'
@@ -39,10 +39,16 @@
           }
         ]
       '4':
+        'patterns': [
+          {
+            'include': '#options'
+          }
+        ]
+      '5':
         'name': 'keyword.deepsec'
   }
   {
-    'match': '(fun)\\s+((\\w|\')+)\\s*/\\s*([0-9]+)\\s*(\\.)'
+    'match': '(fun)\\s+((\\w|\')+)\\s*/\\s*([0-9]+)\\s*(\\[\\w+\\])?\\s*(\\.)'
     'captures':
       '1':
         'name': 'keyword.control.deepsec'
@@ -51,15 +57,77 @@
       '4':
         'name': 'constant.numeric'
       '5':
+        'patterns': [
+          {
+            'include': '#options'
+          }
+        ]
+      '6':
         'name': 'keyword.deepsec'
   }
   {
-    'match': '(reduc)\\s+((\\w|\')+)\\s*\\('
-    'captures':
+    'name': 'meta.reduc_definition1.deepsec'
+    'begin': '(reduc)\\s*$'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.control.deepsec'
+    'end': '(\\[\\w+\\])?\\s*(\\.)'
+    'endCaptures':
+      '1':
+        'patterns': [
+          {
+            'include': '#options'
+          }
+        ]
+      '2':
+        'name': 'keyword.deepsec'
+    'patterns': [
+      {
+        'match': '^(\\s*(\\w|\')+)'
+        'name': 'entity.name.function.deepsec'
+      }
+      {
+        'match': ';'
+        'name': 'keyword.control.deepsec'
+      }
+      {
+        'match': '(->)'
+        'name': 'constant'
+      }
+    ]
+  }
+  {
+    'name': 'meta.reduc_definition2.deepsec'
+    'begin': '(reduc)\\s+((\\w|\')+)\\s*\\('
+    'beginCaptures':
       '1':
         'name': 'keyword.control.deepsec'
       '2':
         'name': 'entity.name.function.deepsec'
+    'end': '(\\[\\w+\\])?\\s*(\\.)'
+    'endCaptures':
+      '1':
+        'patterns': [
+          {
+            'include': '#options'
+          }
+        ]
+      '2':
+        'name': 'keyword.deepsec'
+    'patterns': [
+      {
+        'match': '^(\\s*(\\w|\')+)'
+        'name': 'entity.name.function.deepsec'
+      }
+      {
+        'match': ';'
+        'name': 'keyword.control.deepsec'
+      }
+      {
+        'match': '(->)'
+        'name': 'constant'
+      }
+    ]
   }
   {
     'match': '(new)\\s+((\\w|\')+)'
@@ -128,9 +196,19 @@
     'match': '\\b(in|out|if|then|else)\\b'
     'name': 'keyword.control'
   }
-  {
-    'match': '(->)'
-    'name': 'constant'
-  }
 ]
 'scopeName': 'source.deepsec'
+
+'repository':
+  'options':
+    'patterns': [
+      {
+        'begin': '\\['
+        'end': '\\]'
+        'name': 'meta.options_declaration.proverif'
+        'patterns': [
+          'match': '(\\w|\')+'
+          'name': 'entity.name.tag.proverif'
+        ]
+      }
+    ]
