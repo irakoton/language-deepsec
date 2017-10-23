@@ -15,6 +15,11 @@
     'end': '\\*\\)'
   }
   {
+    'name': 'comment.multiline'
+    'begin': '/\\*'
+    'end': '\\*/'
+  }
+  {
     'match': '\\b([0-9]+)\\b'
     'captures':
       '1':
