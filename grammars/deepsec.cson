@@ -198,6 +198,10 @@
     'name': 'constant.deepsec'
   }
   {
+    'match': 'query\\s+sess_equiv'
+    'name': 'constant.deepsec'
+  }
+  {
     'match': '\\b(in|out|if|then|else)\\b'
     'name': 'keyword.control'
   }
