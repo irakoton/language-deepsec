@@ -198,7 +198,11 @@
     'name': 'constant.deepsec'
   }
   {
-    'match': 'query\\s+sess_equiv'
+    'match': 'query\\s+session_equiv'
+    'name': 'constant.deepsec'
+  }
+  {
+    'match': 'query\\s+session_incl'
     'name': 'constant.deepsec'
   }
   {
